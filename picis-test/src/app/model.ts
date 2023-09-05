@@ -5,12 +5,6 @@ export interface Hospital {
     rooms: Room[];
 }
 
-export interface Services {
-    id: string;
-    code: string;
-    description: string;
-}
-
 export abstract class Room {
     id!: number;
     code!: string;

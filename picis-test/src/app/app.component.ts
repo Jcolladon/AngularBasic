@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Hospital, Room, ICURoom, WaitingRoom, RegularRoom, ORRoom, loadData, getTimeIn24HourFormat } from './model';
+import { Hospital, Room, ICURoom, WaitingRoom, RegularRoom, ORRoom, loadData, getTimeIn24HourFormat, DiagnosticRoom } from './model';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +23,9 @@ export class AppComponent {
       return "Regular";
     } else if (room instanceof ORRoom) {
       return "OR";
-    } else {
+    } else if (room instanceof DiagnosticRoom){
+      return "DR"
+    }else {
       return "Unknown";
     }
   }
@@ -38,6 +40,8 @@ export class AppComponent {
     } else if (room instanceof ORRoom) {
       // show start and end time in 24 hour format
       return `${getTimeIn24HourFormat(room.startTime)} - ${getTimeIn24HourFormat(room.endTime)}`;
+    } else if(room instanceof DiagnosticRoom){
+      return room.diagnosticType;
     } else {
       return "Unknown";
     }

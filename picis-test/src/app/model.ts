@@ -56,10 +56,25 @@ export class ORRoom extends Room {
     }
 }
 
+export class DiagnosticRoom extends Room{
+    diagnosticType!: DIAGNOSTIC_TYPE;
+
+    constructor(id: number, code: string, floor: number, roomNumber: number, diagnosticType: DIAGNOSTIC_TYPE) {
+        super(id, code, floor, roomNumber);
+        this.diagnosticType = diagnosticType;
+    }
+}
+
 export enum ICU_TYPE {
     NEONATAL = "Neonatal",
     PEDIATRIC = "Pediatric",
     ADULT = "Adult"
+}
+
+export enum DIAGNOSTIC_TYPE{
+    RADIOLOGY = "Radiology",
+    ENDOSCOPY = "Endoscopy",
+    ECHOGRAPHY = "Echography"
 }
 
 export function getTimeIn24HourFormat(time: Time): string {
@@ -74,31 +89,38 @@ export function loadData() : Hospital {
             new ICURoom(1, "ICU-1", 1, 1, ICU_TYPE.ADULT),
             new ORRoom(2, "OR-1", 1, 2, {hours: 8, minutes: 0}, {hours: 16, minutes: 0}),
             new RegularRoom(3, "REG-1", 1, 3, 2),
-            new WaitingRoom(4, "WAIT-1", 1, 4, 10),
+            new WaitingRoom(4, "WAIT-1", 1, 4, 10),           
+            new DiagnosticRoom(30, "DR-1", 1, 5, DIAGNOSTIC_TYPE.ECHOGRAPHY),
             new ICURoom(5, "ICU-2", 2, 1, ICU_TYPE.PEDIATRIC),
-            new ORRoom(5, "OR-2", 2, 2, {hours: 8, minutes: 0}, {hours: 16, minutes: 0}),
+            new ORRoom(6, "OR-2", 2, 2, {hours: 8, minutes: 0}, {hours: 16, minutes: 0}),
             new RegularRoom(7, "REG-2", 2, 3, 2),
             new WaitingRoom(8, "WAIT-2", 2, 4, 10),
+            new DiagnosticRoom(31, "DR-2", 2, 5, DIAGNOSTIC_TYPE.ENDOSCOPY),
             new ICURoom(9, "ICU-3", 3, 1, ICU_TYPE.NEONATAL),
             new ORRoom(10, "OR-3", 3, 2, {hours: 8, minutes: 0}, {hours: 16, minutes: 0}),
             new RegularRoom(11, "REG-3", 3, 3, 2),
             new WaitingRoom(12, "WAIT-3", 3, 4, 10),
+            new DiagnosticRoom(32, "DR-3", 3, 5, DIAGNOSTIC_TYPE.RADIOLOGY),
             new ICURoom(13, "ICU-4", 4, 1, ICU_TYPE.ADULT),
             new ORRoom(14, "OR-4", 4, 2, {hours: 8, minutes: 0}, {hours: 16, minutes: 0}),
             new RegularRoom(15, "REG-4", 4, 3, 2),
             new WaitingRoom(16, "WAIT-4", 4, 4, 10),
+            new DiagnosticRoom(32, "DR-4", 4, 5, DIAGNOSTIC_TYPE.RADIOLOGY), 
             new ICURoom(17, "ICU-5", 5, 1, ICU_TYPE.PEDIATRIC),
             new ORRoom(18, "OR-5", 5, 2, {hours: 8, minutes: 0}, {hours: 16, minutes: 0}),
             new RegularRoom(19, "REG-5", 5, 3, 2),
             new WaitingRoom(20, "WAIT-5", 5, 4, 10),
+            new DiagnosticRoom(32, "DR-5", 5, 5, DIAGNOSTIC_TYPE.ECHOGRAPHY),
             new ICURoom(21, "ICU-6", 6, 1, ICU_TYPE.NEONATAL),
             new ORRoom(22, "OR-6", 6, 2, {hours: 8, minutes: 0}, {hours: 16, minutes: 0}),
             new RegularRoom(23, "REG-6", 6, 3, 2),
             new WaitingRoom(24, "WAIT-6", 6, 4, 10),
+            new DiagnosticRoom(33, "DR-6", 6, 5, DIAGNOSTIC_TYPE.ENDOSCOPY),
             new ICURoom(25, "ICU-7", 7, 1, ICU_TYPE.ADULT),
             new ORRoom(26, "OR-7", 7, 2, {hours: 8, minutes: 0}, {hours: 16, minutes: 0}),
             new RegularRoom(27, "REG-7", 7, 3, 2),
             new WaitingRoom(28, "WAIT-7", 7, 4, 10),
+            new DiagnosticRoom(34, "DR-7", 7, 5, DIAGNOSTIC_TYPE.ECHOGRAPHY),
             new ICURoom(29, "ICU-8", 8, 1, ICU_TYPE.PEDIATRIC)
         ]
     }
